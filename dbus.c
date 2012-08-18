@@ -301,6 +301,11 @@ static DBusConnection* _dbus_connection_resource(zval *obj TSRMLS_DC) {
 static DBusMessage* _dbus_message_resource(zval *obj TSRMLS_DC) {
 	zval **tmp;
 	int resource_type;
+
+	if (obj == NULL) {
+		return NULL;
+	}
+
 	dbus_objprop_get_p(obj, "message", tmp, 0);
 	if (tmp == NULL) {
 		return NULL;
